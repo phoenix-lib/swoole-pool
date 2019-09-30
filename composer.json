@@ -6,7 +6,13 @@
     "issues": "https://github.com/eltaline/swoole-pool/issues",
     "source": "https://github.com/eltaline/swoole-pool"
   },
-  "description": "A common connection pool based on Swoole is usually used as the database connection pool.",
+  "repositories": [
+    {
+      "type": "vcs",
+      "url": "https://github.com/eltaline/swoole-pool"
+    }
+  ],
+  "description": "A common connection pool based on Swoole is usually used as the databases connection pool",
   "keywords": [
     "swoole",
     "swoole-pool",
@@ -24,7 +30,6 @@
     }
   ],
   "require": {
-    "eltaline/swoole-pool": "^1.0.1"
     "php": ">=7.2.0",
     "ext-json": "*",
     "ext-swoole": ">=4.4.0"
@@ -36,11 +41,4 @@
   },
   "prefer-stable": true,
   "minimum-stability": "dev"
-
-  "repositories": [
-    {
-      "type": "vcs",
-      "url": "https://github.com/eltaline/swoole-pool"
-    }
-  ],
 }
