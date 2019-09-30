@@ -289,8 +289,12 @@ Router::addRoute('GET', '/.*', function ($request, $response) use (&$server){
 
 	$mem = $mem_pool->borrow();
 
+//	print_r($mem);
+
 	$mem_array = array_column(Arrayable::toArray($mem), 'errCode');
 	$mem_status = array('errCode' => $mem_array[0]);
+	$mem_array = array_column(Arrayable::toArray($mem), 'errMsg');
+	$mem_message = array('errMsg' => $mem_array[0]);
 
 	if ( ($mem_status['errCode']) !== 0 ) {
 
@@ -303,6 +307,8 @@ Router::addRoute('GET', '/.*', function ($request, $response) use (&$server){
 
 		$mem_array = array_column(Arrayable::toArray($mem), 'errCode');
 		$mem_status = array('errCode' => $mem_array[0]);
+		$mem_array = array_column(Arrayable::toArray($mem), 'errMsg');
+		$mem_message = array('errMsg' => $mem_array[0]);
 
 		if ( ($mem_status['errCode']) !== 0 ) {
 
@@ -322,7 +328,7 @@ Router::addRoute('GET', '/.*', function ($request, $response) use (&$server){
 		$response->status(503);
 		$mem_pool->return($mem);
 
-		throw $mem_pool;
+		throw new RuntimeException('Error code: ' . $mem_status['errCode'] . 'Error message: ' . $mem_message['errMsg']);
 
 	    }
 
