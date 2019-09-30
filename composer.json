@@ -1,0 +1,38 @@
+{
+  "name": "eltaline/swoole-pool",
+  "type": "library",
+  "license": "MIT",
+  "support": {
+    "issues": "https://github.com/eltaline/swoole-pool/issues",
+    "source": "https://github.com/eltaline/swoole-pool"
+  },
+  "description": "A common connection pool based on Swoole is usually used as the database connection pool.",
+  "keywords": [
+    "swoole",
+    "swoole-pool",
+    "database-swoole-pool"
+  ],
+  "homepage": "https://github.com/eltaline/swoole-pool",
+  "authors": [
+    {
+      "name": "Andrew Mind",
+      "email": "syslinux@pm.me"
+    },
+    {
+      "name": "Eltaline",
+      "email": "eltaline.ou@gmail.com"
+    }
+  ],
+  "require": {
+    "php": ">=7.2.0",
+    "ext-json": "*",
+    "ext-swoole": ">=4.4.0"
+  },
+  "autoload": {
+    "psr-4": {
+      "Smf\\ConnectionPool\\": "src"
+    }
+  },
+  "prefer-stable": true,
+  "minimum-stability": "dev"
+}
