@@ -45,7 +45,4 @@
 	    "email": "eltaline.ou@gmail.com"
 	}
     ],
-    "require": {
-        "eltaline/swoole-pool": "~1.0"
-    }
 }
