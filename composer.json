@@ -1,16 +1,4 @@
 {
-  "repositories": [
-    {
-      "type": "vcs",
-      "url": "https://github.com/eltaline/swoole-pool"
-    }
-  ],
-  "require": {
-    "eltaline/swoole-pool": "^1.0.1"
-  }
-}
-
-{
   "name": "eltaline/swoole-pool",
   "type": "library",
   "license": "MIT",
