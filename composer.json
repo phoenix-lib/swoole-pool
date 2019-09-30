@@ -1,44 +1,51 @@
 {
-  "name": "eltaline/swoole-pool",
-  "type": "library",
-  "license": "MIT",
-  "support": {
-    "issues": "https://github.com/eltaline/swoole-pool/issues",
-    "source": "https://github.com/eltaline/swoole-pool"
-  },
-  "repositories": [
-    {
-      "type": "vcs",
-      "url": "https://github.com/eltaline/swoole-pool"
-    }
-  ],
-  "description": "A common connection pool based on Swoole is usually used as the databases connection pool",
-  "keywords": [
-    "swoole",
-    "swoole-pool",
-    "database-swoole-pool"
-  ],
-  "homepage": "https://github.com/eltaline/swoole-pool",
-  "authors": [
-    {
-      "name": "Andrew Mind",
-      "email": "syslinux@pm.me"
+    "name": "eltaline/swoole-pool",
+    "description": "A common connection pool based on Swoole is usually used as the databases connection pool",
+    "homepage": "https://github.com/eltaline/swoole-pool",
+    "type": "library",
+    "license": "MIT",
+    "support": {
+	"issues": "https://github.com/eltaline/swoole-pool/issues",
+	"source": "https://github.com/eltaline/swoole-pool"
     },
-    {
-      "name": "Eltaline",
-      "email": "eltaline.ou@gmail.com"
+    "keywords": [
+	"swoole",
+	"swoole-pool",
+	"database-swoole-pool"
+    ],
+    "repositories": [
+	{
+	    "type":"package",
+	    "package": {
+		"name": "eltaline/swoole-pool",
+		"version":"master",
+		"source": {
+		    "url": "https://github.com/eltaline/swoole-pool.git",
+		    "type": "git",
+		    "reference":"master"
+		}
+	    }
+	}
+    ],
+    "require": {
+	"eltaline/swoole-pool": "master"
+    },
+    "autoload": {
+	"psr-4": {
+	    "Smf\\ConnectionPool\\": "src"
+	}
+    },
+    "authors": [
+	{
+	    "name": "Andrew Mind",
+	    "email": "syslinux@pm.me"
+	},
+	{
+	    "name": "Eltaline",
+	    "email": "eltaline.ou@gmail.com"
+	}
+    ],
+    "require": {
+        "eltaline/swoole-pool": "~1.0"
     }
-  ],
-  "require": {
-    "php": ">=7.2.0",
-    "ext-json": "*",
-    "ext-swoole": ">=4.4.0"
-  },
-  "autoload": {
-    "psr-4": {
-      "Smf\\ConnectionPool\\": "src"
-    }
-  },
-  "prefer-stable": true,
-  "minimum-stability": "dev"
 }
