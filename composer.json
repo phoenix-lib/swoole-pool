@@ -1,4 +1,16 @@
 {
+  "repositories": [
+    {
+      "type": "vcs",
+      "url": "https://github.com/eltaline/swoole-pool"
+    }
+  ],
+  "require": {
+    "eltaline/swoole-pool": "^1.0.1"
+  }
+}
+
+{
   "name": "eltaline/swoole-pool",
   "type": "library",
   "license": "MIT",
@@ -24,6 +36,7 @@
     }
   ],
   "require": {
+    "eltaline/swoole-pool": "^1.0.1"
     "php": ">=7.2.0",
     "ext-json": "*",
     "ext-swoole": ">=4.4.0"
@@ -35,4 +48,11 @@
   },
   "prefer-stable": true,
   "minimum-stability": "dev"
+
+  "repositories": [
+    {
+      "type": "vcs",
+      "url": "https://github.com/eltaline/swoole-pool"
+    }
+  ],
 }
