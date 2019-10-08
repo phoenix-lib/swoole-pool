@@ -293,7 +293,13 @@ Router::addRoute('GET', '/.*', function ($request, $response) use (&$server){
     try {
 
 	$red = $red_pool->borrow();
-	$red_status = (array) $red;
+
+//	print_r($red);
+
+        $red_array = Arrayable::toArray($red);
+        $red_status = array('errCode' => $red_array['errCode']);
+        $red_array = Arrayable::toArray($red);
+	$red_message = array('errMsg' => $red_array['errMsg']);
 
 	if ( ($red_status['errCode']) !== 0 ) {
 
@@ -303,7 +309,11 @@ Router::addRoute('GET', '/.*', function ($request, $response) use (&$server){
 	    foreach ( $red_pools as $red_pool ) {
 
 		$red = $red_pool->borrow();
-		$red_status = (array) $red;
+
+    		$red_array = Arrayable::toArray($red);
+	        $red_status = array('errCode' => $red_array['errCode']);
+		$red_array = Arrayable::toArray($red);
+	        $red_message = array('errMsg' => $red_array['errMsg']);
 
 		if ( ($red_status['errCode']) !== 0 ) {
 
@@ -323,7 +333,7 @@ Router::addRoute('GET', '/.*', function ($request, $response) use (&$server){
 		$response->status(503);
 		$red_pool->return($red);
 
-		throw new RuntimeException('Error code: ' . $red_status['errCode'] . 'Error message: ' . $red_status['errMsg']);
+		throw new RuntimeException('Error code: ' . $red_status['errCode'] . 'Error message: ' . $red_message['errMsg']);
 
 	    }
 

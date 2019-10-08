@@ -293,7 +293,13 @@ Router::addRoute('GET', '/.*', function ($request, $response) use (&$server){
     try {
 
 	$pdb = $pdb_pool->borrow();
-	$pdb_status = (array) $pdb;
+
+//	print_r($pdb);
+
+        $pdb_array = Arrayable::toArray($pdb);
+        $pdb_status = array('errCode' => $pdb_array['errCode']);
+        $pdb_array = Arrayable::toArray($pdb);
+        $pdb_message = array('errMsg' => $pdb_array['errMsg']);
 
 	if ( ($pdb_status['errCode']) !== 0 ) {
 
@@ -303,7 +309,11 @@ Router::addRoute('GET', '/.*', function ($request, $response) use (&$server){
 	    foreach ( $pdb_pools as $pdb_pool ) {
 
 		$pdb = $pdb_pool->borrow();
-		$pdb_status = (array) $pdb;
+
+	        $pdb_array = Arrayable::toArray($pdb);
+	        $pdb_status = array('errCode' => $pdb_array['errCode']);
+	        $pdb_array = Arrayable::toArray($pdb);
+	        $pdb_message = array('errMsg' => $pdb_array['errMsg']);
 
 		if ( ($pdb_status['errCode']) !== 0 ) {
 
@@ -323,7 +333,7 @@ Router::addRoute('GET', '/.*', function ($request, $response) use (&$server){
 		$response->status(503);
 		$pdb_pool->return($pdb);
 
-		throw new RuntimeException('Error code: ' . $pdb_status['errCode'] . 'Error message: ' . $pdb_status['errMsg']);
+		throw new RuntimeException('Error code: ' . $pdb_status['errCode'] . 'Error message: ' . $pdb_message['errMsg']);
 
 	    }
 

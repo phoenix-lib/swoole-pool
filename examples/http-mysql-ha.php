@@ -308,9 +308,12 @@ Router::addRoute('GET', '/.*', function ($request, $response) use (&$server){
 
 //	print_r($msl);
 
-	$msl_status = (array) $msl;
+	$msl_array = Arrayable::toArray($msl);
+	$msl_status = array('errCode' => $msl_array['connect_errno']);
+	$msl_array = Arrayable::toArray($msl);
+	$msl_message = array('errMsg' => $msl_array['connect_error']);
 
-	if ( ($msl_status['connect_errno']) !== 0 ) {
+	if ( ($msl_status['errCode']) !== 0 ) {
 
 	    $msl_pool->return($msl);
 	    shuffle($msl_pools);
@@ -318,9 +321,13 @@ Router::addRoute('GET', '/.*', function ($request, $response) use (&$server){
 	    foreach ( $msl_pools as $msl_pool ) {
 
 		$msl = $msl_pool->borrow();
-		$msl_status = (array) $msl;
 
-		if ( ($msl_status['connect_errno']) !== 0 ) {
+		$msl_array = Arrayable::toArray($msl);
+		$msl_status = array('errCode' => $msl_array['connect_errno']);
+		$msl_array = Arrayable::toArray($msl);
+		$msl_message = array('errMsg' => $msl_array['connect_error']);
+
+		if ( ($msl_status['errCode']) !== 0 ) {
 
 		    $msl_pool->return($msl);
 		    continue;
@@ -333,12 +340,12 @@ Router::addRoute('GET', '/.*', function ($request, $response) use (&$server){
 
 	    }
 
-	    if ( ($msl_status['connect_errno']) !== 0 ) {
+	    if ( ($msl_status['errCode']) !== 0 ) {
 
 		$response->status(503);
 		$msl_pool->return($msl);
 
-		throw new RuntimeException('Error code: ' . $msl_status['connect_errno'] . 'Error message: ' . $msl_status['connect_error']);
+		throw new RuntimeException('Error code: ' . $msl_status['errCode'] . 'Error message: ' . $msl_message['errMsg']);
 
 	    }
 

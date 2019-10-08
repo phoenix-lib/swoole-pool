@@ -375,7 +375,7 @@ Router::addRoute('GET', '/.*', function ($request, $response) use (&$server){
 
     $sph_pool->return($sph);
 
-    if ( ! $relatedData ) {
+    if ( ! $data ) {
 
 	$response->status(404);
 	return;
@@ -383,7 +383,7 @@ Router::addRoute('GET', '/.*', function ($request, $response) use (&$server){
     }
 
 //    print_r($data);
-    $response->end($data);
+    $response->end(json_encode($data));
 
 });
 
